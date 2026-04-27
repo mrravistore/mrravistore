@@ -1,0 +1,222 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RAVI STORE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="Logo-tab.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="container nav-wrap">
+
+        <div class="brand">
+            <img src="Logo-tab.png" alt="logo" class="nav-logo">
+            <div class="brand-text">
+                <span>RAVI</span> STORE
+            </div>
+        </div>
+
+        <div class="status-box">
+            <span id="status-dot" class="open-dot"></span>
+            <span id="status-text">LOADING...</span>
+        </div>
+
+    </div>
+</nav>
+
+
+<header class="hero">
+<div class="container hero-grid">
+
+<div class="hero-left">
+
+<div class="mini-badge">🇱🇰 SRI LANKA PREMIUM FREE FIRE UTILITY STORE</div>
+
+<h1>
+DOMINATE WITH <span>RAVI STORE</span>
+</h1>
+
+<p>
+Safe Guild Glory bots, real profile likes, instant WhatsApp ordering,
+premium support and trusted service.
+</p>
+
+<div class="hero-buttons">
+<button class="btn primary" onclick="scrollToId('guild')">BUY GUILD GLORY</button>
+<button class="btn secondary" onclick="scrollToId('likes')">BUY PROFILE LIKES</button>
+</div>
+
+</div>
+
+<div class="hero-right">
+<img src="Logo.png" class="hero-logo" alt="Ravi Store">
+</div>
+
+</div>
+</header>
+
+
+<section id="guild" class="section">
+<div class="container">
+
+<h2 class="title">GUILD GLORY PACKAGES</h2>
+<p class="subtitle">Choose your squad package</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>1 Squad</h3>
+<div class="desc">
+⚡ 3 Bots Activated<br>
+🏆 100K - 200K Glory<br>
+🛡 Safe Gradual Delivery
+</div>
+<div class="price">LKR 1,000</div>
+<button class="btn primary full" onclick="buyGuild(1,1000)">ORDER NOW</button>
+<div class="desc">142 Sold</div>
+</div>
+
+<div class="card">
+<h3>2 Squads</h3>
+<div class="desc">
+⚡ 6 Bots Activated<br>
+🏆 200K - 400K Glory<br>
+🚀 Faster Boost Delivery
+</div>
+<div class="price">LKR 2,000</div>
+<button class="btn primary full" onclick="buyGuild(2,2000)">ORDER NOW</button>
+<div class="desc">288 Sold</div>
+</div>
+
+<div class="card">
+<div class="tag hot">POPULAR</div>
+<h3>3 Squads</h3>
+<div class="desc">
+⚡ 9 Bots Activated<br>
+🏆 400K - 600K Glory<br>
+🔥 High Rank Push
+</div>
+<div class="price">LKR 3,000</div>
+<button class="btn primary full" onclick="buyGuild(3,3000)">ORDER NOW</button>
+<div class="desc">466 Sold</div>
+</div>
+
+<div class="card">
+<h3>4 Squads</h3>
+<div class="desc">
+⚡ 12 Bots Activated<br>
+🏆 600K - 900K Glory<br>
+🔥 High Rank Push
+</div>
+<div class="price">LKR 4,000</div>
+<button class="btn primary full" onclick="buyGuild(4,4000)">ORDER NOW</button>
+<div class="desc">219 Sold</div>
+</div>
+
+<div class="card">
+<h3>5 Squads</h3>
+<div class="desc">
+⚡ 15 Bots Activated<br>
+🏆 900K - 1.2M Glory<br>
+👑 Elite Massive Growth<br>
+🔥 High Rank Push
+</div>
+<div class="price">LKR 5,000</div>
+<button class="btn primary full" onclick="buyGuild(5,5000)">ORDER NOW</button>
+<div class="desc">173 Sold</div>
+</div>
+
+<div class="card featured">
+<div class="tag">BEST VALUE</div>
+<h3>6 Squads</h3>
+<div class="desc">
+⚡ 18 Bots Activated<br>
+🏆 1.2M - 1.5M Glory<br>
+🚀 Maximum Power Package
+</div>
+
+<div class="price-wrap">
+<span class="old-price"><s>&nbspLKR 6,000&nbsp</s></span>
+<div class="price">LKR 5,500</div>
+</div>
+
+<button class="btn primary full" onclick="buyGuild(6,5500)">ORDER NOW</button>
+<div class="desc">351 Sold</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+<section id="likes" class="section">
+<div class="container">
+
+<h2 class="title">PROFILE LIKE STORE</h2>
+<p class="subtitle">Real likes with gradual delivery</p>
+
+<div class="grid two">
+
+<div class="card">
+<div class="tag hot">HOT OFFER</div>
+<h3>7 Days Likes</h3>
+
+<div class="desc">
+Total Likes : 1500<br>
+Daily Likes : 220
+</div>
+
+<div class="price">LKR 1,000</div>
+
+<button class="btn primary full" onclick="buyLikes()">BUY NOW</button>
+</div>
+
+
+<div class="card">
+<h3>More Packages</h3>
+
+<div class="desc">
+More premium like packages<br>
+coming soon.
+</div>
+
+<div class="price soon">SOON</div>
+
+<button class="btn secondary full" onclick="contactNow()">WHATSAPP US</button>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+<footer class="footer">
+    <div class="container footer-content">
+        <p class="order-text">📲 Order Now : <span class="highlight">070 268 0801</span></p>
+        
+        <div class="legal-stack">
+            <p>© 2026 RAVI STORE ALL RIGHTS RESERVED</p>
+            <p class="dev-credit">
+                Built by 
+                <a href="https://sanija-sathnindu.w3spaces.com/#Contact" target="_blank">
+                    Sanija Sathnindu
+                </a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
