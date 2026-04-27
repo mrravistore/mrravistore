@@ -6,35 +6,51 @@ function updateStoreStatus() {
     const dot = document.getElementById('status-dot');
     const text = document.getElementById('status-text');
 
-    // Get current time specifically for Sri Lanka timezone
+    if (!dot || !text) return;
+
+    // Sri Lanka Time Calculation
+    const now = new Date();
     const slTime = new Intl.DateTimeFormat('en-US', {
         timeZone: 'Asia/Colombo',
         hour: 'numeric',
         minute: 'numeric',
         hour12: false
-    }).formatToParts(new Date());
+    }).formatToParts(now);
 
     const hours = parseInt(slTime.find(p => p.type === 'hour').value);
     const minutes = parseInt(slTime.find(p => p.type === 'minute').value);
-    const currentTimeInMinutes = (hours * 60) + minutes;
+    const currentTime = (hours * 60) + minutes;
 
-    // 4:30 PM = 16:30 = 990 minutes
-    // 10:30 PM = 22:30 = 1350 minutes
-    const openTime = 990;
+    // 4:30 PM (990 mins) to 10:30 PM (1350 mins)
+    const openTime = 990; 
     const closeTime = 1350;
 
-    if (currentTimeInMinutes >= openTime && currentTimeInMinutes < closeTime) {
-        dot.classList.add('dot-online');
-        dot.classList.remove('dot-offline');
+    if (currentTime >= openTime && currentTime < closeTime) {
+        // ONLINE / OPEN
+        dot.style.backgroundColor = '#00ff88';
+        dot.style.boxShadow = '0 0 10px #00ff88';
         text.innerText = 'OPEN NOW (UNTIL 10:30 PM)';
+        text.style.color = '#00ff88';
     } else {
-        dot.classList.add('dot-offline');
-        dot.classList.remove('dot-online');
+        // OFFLINE / CLOSED
+        dot.style.backgroundColor = '#ff4444';
+        dot.style.boxShadow = '0 0 10px #ff4444';
         text.innerText = 'CLOSED (OPENS AT 4:30 PM)';
+        text.style.color = '#ff4444';
     }
 }
 
-// Update immediately and check every 1 minute
+// Initialize
+window.addEventListener('DOMContentLoaded', () => {
+    updateStoreStatus();
+    setInterval(updateStoreStatus, 30000); // Check every 30 seconds
+});
+
+// Run immediately and then every 30 seconds
+updateStoreStatus();
+setInterval(updateStoreStatus, 30000);
+
+// Initial check and set interval for every minute
 updateStoreStatus();
 setInterval(updateStoreStatus, 60000);
 
