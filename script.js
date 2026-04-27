@@ -131,3 +131,26 @@ behavior:"smooth"
 });
 }
 
+function whatsappRedirect(type, id) {
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    
+    if (type === 'channel') {
+        // Channels: Use deep link for mobile, web link for PC
+        const url = isMobile 
+            ? `whatsapp://channel/${id}` 
+            : `https://whatsapp.com/channel/${id}`;
+        
+        window.location.href = url;
+
+        // Fallback for Channel deep link
+        setTimeout(() => {
+            window.location.href = `https://whatsapp.com/channel/${id}`;
+        }, 500);
+        
+    } else {
+        // Groups: The standard HTTPS link is actually BEST for groups
+        // Mobile phones will automatically detect this and open the App.
+        // PCs will show the "Join Chat" web button.
+        window.location.href = `https://chat.whatsapp.com/${id}`;
+    }
+}
