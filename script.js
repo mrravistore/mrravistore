@@ -64,7 +64,7 @@ function buyGuild(squads, price) {
 
     const info = gloryData[squads] || { bots: squads + " Squads", glory: "N/A" };
 
-    const msg = `Hello RAVI.STORE! 🎮
+    const msg = `Hello RAVI STORE! 🎮
 
 I want to purchase a Guild Glory Package.
 
@@ -84,7 +84,7 @@ Please provide payment instructions.`;
 
 function buyLikes(){
 
-const msg = `Hello RAVI.STORE! 🔥
+const msg = `Hello RAVI STORE! 🔥
 
 I want to purchase Likes Package.
 
@@ -104,7 +104,7 @@ openWhatsApp(msg);
 
 function contactNow(){
 
-const msg = `Hello RAVI.STORE! I need more package details.`;
+const msg = `Hello RAVI STORE! I need more package details.`;
 
 openWhatsApp(msg);
 }
