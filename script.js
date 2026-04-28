@@ -386,7 +386,7 @@ function buyGuild(s, price) {
 function buyLikes() {
     pendingOrder = {
         dbKey: "sold_Likes1",
-        message: "I want to buy Likes for my Free Fire Account. Please send me the details and pricing."
+        message: "I want to buy Likes for my Free Fire Account. Please send me the payment details."
     };
     openPopup();
 }
