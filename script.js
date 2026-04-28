@@ -244,49 +244,83 @@ function createPopup() {
     document.body.appendChild(wrap);
 
     wrap.style.cssText = `
-        position:fixed;inset:0;
+        position:fixed;
+        inset:0;
         background:rgba(0,0,0,.75);
         z-index:999999;
         display:none;
         align-items:center;
         justify-content:center;
-        pointer-events:all;
     `;
 
-    const box = $("adminPopupBox");
-    if (box) {
-        box.style.cssText = `
-            width:90%;max-width:420px;
-            background:#0b0f14;
-            border-radius:20px;
-            padding:24px;
-            position:relative;
-        `;
-    }
+    const box = document.getElementById("adminPopupBox");
+    // Update this section inside createPopup()
+box.style.cssText = `
+    width: 90%;
+    max-width: 400px;
+    background: linear-gradient(145deg, #0f172a, #020617);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 30px;
+    position: relative;
+    transform: scale(0.9);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: white;
+    font-family: 'Inter', sans-serif;
+`;
 
-    $("adminCloseBtn").onclick = closePopup;
-    wrap.onclick = (e) => {
-        if (e.target.id === "adminPopupWrap") closePopup();
-    };
+    // ❗ IMPORTANT: stop click bubbling from box
+    box.addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
 
-    $("adminBtn1").onclick = () => handleAdmin(ADMIN_1);
-    $("adminBtn2").onclick = () => handleAdmin(ADMIN_2);
+    // overlay click closes ONLY popup
+    wrap.addEventListener("click", closePopup);
+
+    document.getElementById("adminCloseBtn")
+        .addEventListener("click", closePopup);
+
+    // CLEAN BUTTON HANDLING (NO DOUBLE FIRING)
+    document.getElementById("adminBtn1")
+        .addEventListener("click", (e) => {
+            e.stopPropagation();
+            handleAdmin(ADMIN_1);
+        });
+
+    document.getElementById("adminBtn2")
+        .addEventListener("click", (e) => {
+            e.stopPropagation();
+            handleAdmin(ADMIN_2);
+        });
 }
 
 function openPopup() {
     createPopup();
+
     resetPopupButtons();
 
     const p = $("adminPopupWrap");
-    if (!p) return;
+    const box = $("adminPopupBox");
 
     p.style.display = "flex";
+
+    setTimeout(() => {
+        box.style.transform = "scale(1)";
+    }, 10);
+
     popupOpen = true;
 }
 
 function closePopup() {
     const p = $("adminPopupWrap");
-    if (p) p.style.display = "none";
+    const box = $("adminPopupBox");
+
+    if (!p || !box) return;
+
+    box.style.transform = "scale(0.9)";
+    p.style.display = "none";
 
     popupOpen = false;
     pendingOrder = null;
@@ -352,18 +386,27 @@ function buyGuild(s, price) {
 function buyLikes() {
     pendingOrder = {
         dbKey: "sold_Likes1",
-        message: "Buy Likes Package - 1500 Likes"
+        message: "I want to buy Likes for my Free Fire Account. Please send me the details and pricing."
     };
     openPopup();
 }
 
-function contactNow() {
-    pendingOrder = {
-        dbKey: null,
-        message: "Need info"
-    };
+window.contactNow = function (mode) {
+    if (mode === 'rare') {
+        pendingOrder = {
+            dbKey: "uid_request_count",
+            message: `🔥 RARE UID REQUEST\n\nI want to buy a Unique UID.\n\nPlease send available options.`
+        };
+    } else {
+        // Default "WhatsApp Us" General Message
+        pendingOrder = {
+            dbKey: null, 
+            message: `Hello! I'm interested in your services. Can you help me?`
+        };
+    }
+
     openPopup();
-}
+};
 
 /* =========================
    SCROLL FIX
@@ -383,6 +426,7 @@ window.addEventListener("DOMContentLoaded", () => {
     initCounters();
     createPopup();
 });
+
 
 /* =========================
    EXPORT
