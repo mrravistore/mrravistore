@@ -9,16 +9,19 @@
 <meta name="author" content="Sanija Sathnindu">
 <meta name="robots" content="index, follow">
 <title>RAVI STORE</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/jpeg" href="Logo-tab.png">
 <link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
 <nav class="navbar">
     <div class="container nav-wrap">
+
         <div class="brand">
             <img src="Logo-tab.png" alt="logo" class="nav-logo">
             <div class="brand-text">
@@ -34,6 +37,7 @@
             <span id="status-dot" class="open-dot"></span>
             <span id="status-text">LOADING...</span>
         </div>
+
     </div>
 </nav>
 
@@ -41,13 +45,17 @@
 
 <header class="hero">
     <div class="container hero-grid">
+
         <div class="hero-left">
             <div class="mini-badge">🇱🇰 SRI LANKA PREMIUM GAMING COLLAB</div>
+
             <h1>DOMINATE WITH <span>RAVI x SHAWDY</span></h1>
+
             <p>
-                The ultimate partnership for Guild Glory bots and real profile likes. 
+                The ultimate partnership for Guild Glory bots and real profile likes.
                 Fast, safe, and trusted premium service.
             </p>
+
             <div class="hero-buttons">
                 <button class="btn primary" onclick="scrollToId('guild')">BUY GUILD GLORY</button>
                 <button class="btn secondary" onclick="scrollToId('likes')">BUY PROFILE LIKES</button>
@@ -61,9 +69,9 @@
                 <img src="Logo2.png" class="collab-img" alt="Shawdy">
             </div>
         </div>
+
     </div>
 </header>
-
 
 <section id="guild" class="section">
 <div class="container">
@@ -82,7 +90,7 @@
 </div>
 <div class="price">LKR 1,000</div>
 <button class="btn primary full" onclick="buyGuild(1,1000)">ORDER NOW</button>
-<div class="desc">142 Sold</div>
+<div class="desc" id="glory1-display">142 Sold</div>
 </div>
 
 <div class="card">
@@ -94,7 +102,7 @@
 </div>
 <div class="price">LKR 2,000</div>
 <button class="btn primary full" onclick="buyGuild(2,2000)">ORDER NOW</button>
-<div class="desc">288 Sold</div>
+<div class="desc" id="glory2-display">288 Sold</div>
 </div>
 
 <div class="card">
@@ -107,7 +115,7 @@
 </div>
 <div class="price">LKR 3,000</div>
 <button class="btn primary full" onclick="buyGuild(3,3000)">ORDER NOW</button>
-<div class="desc">466 Sold</div>
+<div class="desc" id="glory3-display">466 Sold</div>
 </div>
 
 <div class="card">
@@ -119,7 +127,7 @@
 </div>
 <div class="price">LKR 4,000</div>
 <button class="btn primary full" onclick="buyGuild(4,4000)">ORDER NOW</button>
-<div class="desc">219 Sold</div>
+<div class="desc" id="glory4-display">219 Sold</div>
 </div>
 
 <div class="card">
@@ -132,12 +140,13 @@
 </div>
 <div class="price">LKR 5,000</div>
 <button class="btn primary full" onclick="buyGuild(5,5000)">ORDER NOW</button>
-<div class="desc">173 Sold</div>
+<div class="desc" id="glory5-display">173 Sold</div>
 </div>
 
 <div class="card featured">
 <div class="tag">BEST VALUE</div>
 <h3>6 Squads</h3>
+
 <div class="desc">
 ⚡ 18 Bots Activated<br>
 🏆 1.2M - 1.5M Glory<br>
@@ -150,16 +159,13 @@
 </div>
 
 <button class="btn primary full" onclick="buyGuild(6,5500)">ORDER NOW</button>
-<div class="desc">351 Sold</div>
-</div>
+<div class="desc" id="glory6-display">351 Sold</div>
 
 </div>
 
 </div>
 </div>
 </section>
-
-
 
 <section id="likes" class="section">
 <div class="container">
@@ -181,8 +187,8 @@ Daily Likes : 220
 <div class="price">LKR 1,000</div>
 
 <button class="btn primary full" onclick="buyLikes()">BUY NOW</button>
+<div class="desc" id="likes1-display">51 Sold</div>
 </div>
-
 
 <div class="card">
 <h3>More Packages</h3>
@@ -202,52 +208,68 @@ coming soon.
 </section>
 
 <section class="community-section">
-    <div class="section-header">
-        <span class="badge">CONNECT</span>
-        <h2>Join Our Community</h2>
-        <p>Stay updated with the latest FF boosts and tournament news</p>
-    </div>
 
-    <div class="community-grid">
-        <div class="comm-card" onclick="whatsappRedirect('channel', '0029Vb843rw5kg76uR1kx63P')">
-            <div class="comm-icon">📢</div>
-            <h3>Official Channel</h3>
-            <p>Daily updates & price lists</p>
-            <span class="comm-btn">FOLLOW</span>
-        </div>
+<div class="section-header">
+<span class="badge">CONNECT</span>
+<h2>Join Our Community</h2>
+<p>Stay updated with the latest FF boosts and tournament news</p>
+</div>
 
-        <div class="comm-card" onclick="whatsappRedirect('group', 'LBUEeQaNd3849yNPxOLyZ9')">
-            <div class="comm-icon">💬</div>
-            <h3>Ravi Store Chat</h3>
-            <p>Connect with other players</p>
-            <span class="comm-btn">JOIN CHAT</span>
-        </div>
+<div class="community-grid">
 
-        <div class="comm-card tournament-card" onclick="whatsappRedirect('group', 'Cl2eX4Vuj8UFOtxbJUnvQp')">
-            <div class="comm-icon">🏆</div>
-            <h3>FF Tournaments</h3>
-            <p>Register for upcoming matches</p>
-            <span class="comm-btn">REGISTER</span>
-        </div>
-    </div>
+<div class="comm-card" onclick="whatsappRedirect('channel','0029Vb843rw5kg76uR1kx63P')">
+<div class="comm-icon">📢</div>
+<h3>Official Channel</h3>
+<p>Daily updates & price lists</p>
+<span class="comm-btn">FOLLOW</span>
+</div>
+
+<div class="comm-card" onclick="whatsappRedirect('group','LBUEeQaNd3849yNPxOLyZ9')">
+<div class="comm-icon">💬</div>
+<h3>Ravi Store Chat</h3>
+<p>Connect with other players</p>
+<span class="comm-btn">JOIN CHAT</span>
+</div>
+
+<div class="comm-card tournament-card" onclick="whatsappRedirect('group','Cl2eX4Vuj8UFOtxbJUnvQp')">
+<div class="comm-icon">🏆</div>
+<h3>FF Tournaments</h3>
+<p>Register for upcoming matches</p>
+<span class="comm-btn">REGISTER</span>
+</div>
+
+</div>
 </section>
 
 <footer class="footer">
-    <div class="container footer-content">
-        <p class="order-text">📲 Order Now : <span class="highlight">070 268 0801</span></p>
-        
-        <div class="legal-stack">
-            <p>© 2026 RAVI STORE ALL RIGHTS RESERVED</p>
-            <p class="dev-credit">
-                Built by 
-                <a href="https://sanija-sathnindu.w3spaces.com/#Contact" target="_blank">
-                    Sanija Sathnindu
-                </a>
-            </p>
-        </div>
-    </div>
+<div class="container footer-content">
+
+<p class="order-text">
+📲 Order Now :
+<span class="highlight">070 268 0801</span>
+</p>
+
+<div class="legal-stack">
+<p>© 2026 RAVI STORE ALL RIGHTS RESERVED</p>
+
+<p class="dev-credit">
+Built by
+<a href="https://sanija-sathnindu.w3spaces.com/#Contact" target="_blank">
+Sanija Sathnindu
+</a>
+</p>
+</div>
+
+</div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+    // Force these into global scope immediately
+    window.buyGuild = function(s, p) { console.log("Module not ready yet"); };
+    window.buyLikes = function() { console.log("Module not ready yet"); };
+    window.scrollToId = function(id) { document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); };
+</script>
+<script type="module" src="script.js"></script>
+
 </body>
 </html>
