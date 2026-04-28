@@ -230,6 +230,7 @@ margin-bottom:18px;
 .hero h1 span{
 background:linear-gradient(90deg,#00eaff,#4c87ff,#ff4ea3);
 -webkit-background-clip:text;
+background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
@@ -573,4 +574,151 @@ a.btn {
 .nav-btn:hover {
     background: #00eaff;
     color: #000;
+}
+
+/* =========================
+   RARE UID SECTION
+========================= */
+
+.rare-uid-section{
+padding:70px 0;
+background: radial-gradient(circle at top, rgba(0,234,255,0.08), transparent 60%);
+}
+
+.rare-uid-grid{
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+/* Banner */
+.rare-uid-banner{
+width:100%;
+border-radius:20px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 0 30px rgba(0,234,255,0.08);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:10px; /* gives breathing space */
+background:rgba(255,255,255,0.02);
+}
+
+.rare-uid-banner img{
+width:100%;
+max-width:320px;   /* 🔥 controls SMALL size */
+height:auto;       /* 🔥 keeps full image visible */
+display:block;
+border-radius:16px;
+transition:0.35s ease;
+}
+
+/* hover polish */
+.rare-uid-banner img:hover{
+transform:scale(1.02);
+}
+
+/* Content */
+.rare-uid-content h2{
+font-family:'Orbitron',sans-serif;
+font-size:clamp(28px,4vw,44px);
+margin:12px 0;
+}
+
+.rare-uid-content p{
+color:#aab0bf;
+line-height:1.7;
+margin-bottom:20px;
+}
+
+/* Tag */
+.rare-tag{
+display:inline-block;
+padding:6px 12px;
+font-size:12px;
+font-weight:900;
+border-radius:50px;
+background:linear-gradient(90deg,#ff007a,#ff4ea3);
+color:#fff;
+margin-bottom:10px;
+}
+
+/* UID BOXES */
+.uid-list{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+margin:20px 0;
+}
+
+.uid-item{
+padding:12px;
+text-align:center;
+border-radius:12px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.07);
+font-weight:700;
+letter-spacing:1px;
+color:#00eaff;
+transition:0.25s;
+}
+
+.uid-item:hover{
+transform:translateY(-3px);
+border-color:#00eaff;
+background:rgba(0,234,255,0.06);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+.rare-uid-grid{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.rare-uid-banner{
+order:-1;
+}
+
+.uid-list{
+grid-template-columns:1fr;
+}
+
+.rare-uid-content{
+padding-top:10px;
+}
+
+}
+
+.adminBtn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.adminBtn:hover {
+    background: #00ff88;
+    color: #000;
+}
+
+.adminBtn small {
+    opacity: 0.6;
+    font-size: 0.8rem;
+    margin-top: 4px;
 }
