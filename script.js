@@ -46,14 +46,6 @@ window.addEventListener('DOMContentLoaded', () => {
     setInterval(updateStoreStatus, 30000); // Check every 30 seconds
 });
 
-// Run immediately and then every 30 seconds
-updateStoreStatus();
-setInterval(updateStoreStatus, 30000);
-
-// Initial check and set interval for every minute
-updateStoreStatus();
-setInterval(updateStoreStatus, 60000);
-
 function openWhatsApp(message) {
     const encoded = encodeURIComponent(message);
     const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
