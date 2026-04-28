@@ -393,18 +393,20 @@ function buyLikes() {
 
 window.contactNow = function (mode) {
     if (mode === 'rare') {
+        // Specifically for the Rare UID section
         pendingOrder = {
-            dbKey: "uid_request_count",
-            message: `🔥 RARE UID REQUEST\n\nI want to buy a Unique UID.\n\nPlease send available options.`
+            dbKey: "click_rare_uid", 
+            message: `🔥 RARE UID REQUEST\n\nI want to buy a Unique UID.\n\nPlease send available options + pricing details.\n\nI am ready to purchase immediately.`
         };
     } else {
-        // Default "WhatsApp Us" General Message
+        // For the general "WhatsApp Us" button
         pendingOrder = {
-            dbKey: null, 
-            message: `Hello! I'm interested in your services. Can you help me?`
+            dbKey: "click_general_contact", 
+            message: `Hello! I'm interested in your services. Can you help me with more information?`
         };
     }
 
+    // Now trigger the selection popup
     openPopup();
 };
 
