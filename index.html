@@ -165,6 +165,8 @@
 
 </div>
 </div>
+
+<!-- Likes store -->
 </section>
 
 <section id="likes" class="section">
@@ -186,11 +188,38 @@ Daily Likes : 220
 
 <div class="price">LKR 1,000</div>
 
-<button class="btn primary full" onclick="buyLikes()">BUY NOW</button>
+<button class="btn primary full" onclick="buyLikes('1000')">BUY NOW</button>
 <div class="desc" id="likes1-display">51 Sold</div>
 </div>
 
-<div class="card">
+<div class="card"><br>
+<h3>14 Days Likes</h3>
+
+<div class="desc">
+Total Likes : 3000<br>
+Daily Likes : 220
+</div>
+
+<div class="price">LKR 2,000</div>
+<button class="btn primary full" onclick="buyLikes('2000')">BUY NOW</button>
+<div class="desc" id="likes2-display">0 Sold</div>
+</div>
+
+<div class="card"><br>
+<h3>28 Days Likes</h3>
+
+<div class="desc">
+Total Likes : 6000<br>
+Daily Likes : 220
+</div>
+
+<div class="price">LKR 4,000</div>
+
+<button class="btn primary full" onclick="buyLikes('4000')">BUY NOW</button>
+<div class="desc" id="likes3-display">0 Sold</div>
+</div>
+
+<div class="card"><br>
 <h3>More Packages</h3>
 
 <div class="desc">
@@ -201,9 +230,7 @@ coming soon.
 <div class="price soon">SOON</div>
 
 <button class="btn secondary full" onclick="contactNow('general')">
-
-    WhatsApp Us
-
+WhatsApp Us
 </button>
 </div>
 
@@ -252,6 +279,8 @@ coming soon.
 
 </section>
 
+<!--Community Section-->
+
 <section class="community-section">
 
 <div class="section-header">
@@ -261,6 +290,13 @@ coming soon.
 </div>
 
 <div class="community-grid">
+
+<div class="comm-card tiktok-card" onclick="socialRedirect('tiktok','https://www.tiktok.com/@mr.ravi.live.only1')">
+<div class="comm-icon"><img src="tik-tok.png" alt="TikTok logo"></div>
+<h3>TikTok</h3>
+<p>Watch latest Live and clips</p>
+<span class="comm-btn">FOLLOW NOW</span>
+</div>
 
 <div class="comm-card" onclick="whatsappRedirect('channel','0029Vb843rw5kg76uR1kx63P')">
 <div class="comm-icon">📢</div>
