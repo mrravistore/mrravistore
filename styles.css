@@ -532,11 +532,14 @@ width:100%;
     background: rgba(255, 0, 85, 0.05);
 }
 
-.tournament-card .comm-btn {
-    color: #ff0055;
+.tiktok-card:hover{
+border-color:#ff0050;
+background:rgba(255,0,80,0.05);
 }
 
-
+.tiktok-card .comm-btn{
+color:#ff0050;
+}
 
 /*Optimizer*/
 
@@ -721,13 +724,4 @@ padding-top:10px;
     opacity: 0.6;
     font-size: 0.8rem;
     margin-top: 4px;
-}
-
-.tiktok-card:hover{
-border-color:#ff0050;
-background:rgba(255,0,80,0.05);
-}
-
-.tiktok-card .comm-btn{
-color:#ff0050;
 }
