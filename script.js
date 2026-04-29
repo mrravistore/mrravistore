@@ -203,6 +203,8 @@ function initCounters() {
     bindCounter("glory5-display", "sold_glory5");
     bindCounter("glory6-display", "sold_glory6");
     bindCounter("likes1-display", "sold_Likes1");
+    bindCounter("likes2-display", "sold_Likes2");
+    bindCounter("likes3-display", "sold_Likes3");
     bindCounter("sxs-display", "download_sxs", " Downloads");
 }
 
@@ -383,12 +385,32 @@ function buyGuild(s, price) {
     openPopup();
 }
 
-function buyLikes() {
+function buyLikes(price) {
+
+    let dbKey = "";
+    let packageText = "";
+
+    if (price === "1000") {
+        dbKey = "sold_Likes1";
+        packageText = "7 Days Likes";
+    }
+
+    if (price === "2000") {
+        dbKey = "sold_Likes2";
+        packageText = "14 Days Likes";
+    }
+
+    if (price === "4000") {
+        dbKey = "sold_Likes3";
+        packageText = "28 Days Likes";
+    }
+
     pendingOrder = {
-        dbKey: "sold_Likes1",
-        message: "I want to buy Likes for my Free Fire Account. Please send me the payment details."
+        dbKey: dbKey,
+        message: "I want to buy " + packageText + " LKR " + price + " for my Free Fire Account. Please send me the payment details."
     };
-    openPopup();
+
+    openPopup(); // popup first for every button
 }
 
 window.contactNow = function (mode) {
@@ -429,15 +451,29 @@ window.addEventListener("DOMContentLoaded", () => {
     createPopup();
 });
 
+window.socialRedirect = (type, url) => {
+    try {
+        const mobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+
+        if (mobile) {
+            window.location.href = url;
+        } else {
+            window.open(url, "_blank");
+        }
+
+    } catch (e) {
+        console.error(type + " redirect failed:", e);
+    }
+};
 
 /* =========================
    EXPORT
 ========================= */
 window.whatsappRedirect = (type, id) => {
     try {
-        const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+        const mobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
 
-        let url;
+        let url = "";
 
         if (type === "channel") {
             url = `https://whatsapp.com/channel/${id}`;
@@ -445,13 +481,10 @@ window.whatsappRedirect = (type, id) => {
             url = `https://chat.whatsapp.com/${id}`;
         }
 
-        if (isMobile) {
-            // mobile → direct navigation (better UX)
+        if (mobile) {
             window.location.href = url;
         } else {
-            // desktop → new tab
-            const win = window.open(url, "_blank", "noopener,noreferrer");
-            if (!win) window.location.href = url; // fallback if popup blocked
+            window.open(url, "_blank");
         }
 
     } catch (e) {
