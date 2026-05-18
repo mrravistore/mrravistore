@@ -725,3 +725,113 @@ padding-top:10px;
     font-size: 0.8rem;
     margin-top: 4px;
 }
+
+/* ==========================================
+   PREMIUM ROLLING BANNER BOX (CAROUSEL)
+   ========================================== */
+.banner-carousel-section {
+    padding: 30px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 960px; 
+    margin: 0 auto; /* Centers the banner container cleanly on the page */
+    border-radius: 20px;
+    background: rgba(10, 10, 15, 0.5);
+    border: 1px solid rgba(0, 234, 255, 0.15);
+    box-shadow: 0 0 25px rgba(0, 234, 255, 0.05), inset 0 0 15px rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+}
+
+/* Slide Track */
+.carousel-track {
+    display: flex;
+    width: 400%; /* 4 slides = 400% */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+/* Individual Slides */
+.carousel-slide {
+    width: 25%; /* Each slide takes exactly 1/4th of track space */
+    flex-shrink: 0;
+    position: relative;
+    
+    /* Forces the box into a clean 16:9 widescreen ratio (e.g., 1280x720) */
+    aspect-ratio: 16 / 9; 
+    overflow: hidden;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    
+    /* Scales your thumbnails perfectly without stretching or distorting them */
+    object-fit: cover; 
+    object-position: center;
+    display: block;
+    pointer-events: none;
+}
+
+/* Premium Indicator Dots */
+.carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+    background: rgba(5, 5, 7, 0.6);
+    padding: 6px 14px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: linear-gradient(90deg, #00eaff, #ff4ea3);
+    width: 24px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 234, 255, 0.6);
+}
+
+/* Tablet and Mobile Optimization overrides */
+@media (max-width: 900px) {
+    .banner-carousel-section {
+        padding: 15px 0;
+    }
+    .carousel-wrapper {
+        /* 🔥 MOBILE OPTIMIZATION: Overrides limit to fit small mobile screens naturally */
+        max-width: 100%; 
+        border-radius: 14px;
+    }
+    .carousel-slide {
+        /* Maintains the exact same 16:9 thumbnail ratio flawlessly on screens of all sizes */
+        aspect-ratio: 16 / 9; 
+    }
+    .carousel-dots {
+        bottom: 10px;
+        padding: 4px 10px;
+    }
+    .carousel-dot {
+        width: 6px;
+        height: 6px;
+    }
+    .carousel-dot.active {
+        width: 18px;
+    }
+}
