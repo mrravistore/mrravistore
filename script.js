@@ -23,7 +23,7 @@ const db = getDatabase(app);
    CONSTANTS
 ========================= */
 const ADMIN_1 = "94702680801";
-const ADMIN_2 = "94743876598";
+const ADMIN_2 = "94773109964";
 
 const OPEN_TIME = 990;   // 16:30
 const CLOSE_TIME = 1350; // 22:30
@@ -466,9 +466,108 @@ window.socialRedirect = (type, url) => {
     }
 };
 
+/* ==========================================
+   AUTOMATED ROLLING BANNER CONTROL
+   ========================================== */
+function initPremiumBannerCarousel() {
+    const track = document.getElementById('carouselTrack');
+    const dotContainer = document.getElementById('carouselDots');
+    const slides = document.querySelectorAll('.carousel-slide');
+    
+    if (!track || !dotContainer || slides.length === 0) return;
+
+    let currentIndex = 0;
+    const slideCount = slides.length;
+    const intervalTime = 4000; // Time in milliseconds before changing slide (4 seconds)
+    let carouselInterval;
+
+    // Build Indicators/Dots dynamically
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('carousel-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            goToSlide(index);
+            resetAutoplay();
+        });
+        dotContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    function updateCarousel() {
+        // Move sliding container track smoothly
+        track.style.transform = `translateX(-${currentIndex * 25}%)`;
+        
+        // Update Indicator active tags
+        dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateCarousel();
+    }
+
+    function startAutoplay() {
+        carouselInterval = setInterval(nextSlide, intervalTime);
+    }
+
+    function resetAutoplay() {
+        clearInterval(carouselInterval);
+        startAutoplay();
+    }
+
+    // Touch & Swipe gestures tracking for mobile responsiveness
+    let startX = 0;
+    let endX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        handleSwipeGesture();
+    }, { passive: true });
+
+    function handleSwipeGesture() {
+        const threshold = 50; // Minimum swipe distance in pixels
+        if (startX - endX > threshold) {
+            // Swiped Left -> Next Slide
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateCarousel();
+            resetAutoplay();
+        } else if (endX - startX > threshold) {
+            // Swiped Right -> Previous Slide
+            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+            updateCarousel();
+            resetAutoplay();
+        }
+    }
+
+    // Start everything up safely
+    startAutoplay();
+}
+
+
 /* =========================
    EXPORT
 ========================= */
+window.addEventListener('DOMContentLoaded', () => {
+    initPremiumBannerCarousel();
+});
+
 window.whatsappRedirect = (type, id) => {
     try {
         const mobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
