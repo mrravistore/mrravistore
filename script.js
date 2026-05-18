@@ -239,7 +239,7 @@ function createPopup() {
         </button>
 
         <button id="adminBtn2" class="adminBtn">
-            ADMIN 2 <small>074 438 76598</small>
+            ADMIN 2 <small>077 310 9964</small>
         </button>
     </div>`;
 
