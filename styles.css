@@ -839,57 +839,171 @@ padding-top:10px;
 
 /* Temp Warning */
 
-/* Glory Section Warning Banner */
-.glory-warning {
+/* ==========================================
+   PREMIUM GLORY WARNING BANNER (HYPER-GLOW)
+   ========================================== */
+
+:root {
+    --warn-neon-red: #ff3366;
+    --warn-neon-cyan: #00eaff;
+    --warn-neon-pink: #ff4ea3;
+    --warn-dark-bg: rgba(5, 5, 7, 0.75);
+}
+
+.glory-warning.premium-glow-card {
+    position: relative;
+    max-width: 850px;
+    margin: 0 auto 40px auto;
+    padding: 2px; /* Pulls out border gradient spacing */
+    background: linear-gradient(135deg, rgba(255, 51, 102, 0.4), rgba(255, 78, 163, 0.1) 40%, rgba(0, 234, 255, 0.2));
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+        0 0 30px rgba(255, 51, 102, 0.15),
+        inset 0 0 15px rgba(255, 51, 102, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    animation: banner-subtle-glow 4s infinite ease-in-out;
+}
+
+/* Moving ambient lighting track across header border background */
+.warning-glowing-track {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(0, 234, 255, 0.15) 0%, transparent 60%);
+    animation: ambient-rotate 8s infinite linear;
+    pointer-events: none;
+}
+
+/* Inner Layout Body Container */
+.warning-content-wrapper {
+    position: relative;
+    z-index: 2;
+    background: var(--warn-dark-bg);
+    border-radius: 18px; /* Clean tracking inner edge radius */
+    padding: 24px 32px;
     display: flex;
     align-items: center;
-    gap: 16px;
-    background: rgba(255, 68, 68, 0.06);
-    border: 1px solid rgba(255, 68, 68, 0.25);
-    padding: 16px 24px;
-    border-radius: 16px;
-    margin-bottom: 32px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(255, 68, 68, 0.05);
+    gap: 28px;
 }
 
-.warning-icon {
-    font-size: 24px;
-    animation: pulse-warn 2s infinite ease-in-out;
+/* Left-Side Status Badge Design Module */
+.warning-badge-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 130px;
+    padding: 12px 16px;
+    background: rgba(255, 51, 102, 0.07);
+    border: 1px solid rgba(255, 51, 102, 0.25);
+    border-radius: 12px;
 }
 
-.warning-text {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #fca5a5; /* Soft readable red-pink */
+/* Live pulsating indicator dot element */
+.warning-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--warn-neon-red);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--warn-neon-red);
+    animation: live-indicator-pulse 1.5s infinite ease-in-out;
+}
+
+.warning-badge-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #ff8fa9;
+    text-shadow: 0 0 8px rgba(255, 51, 102, 0.4);
+}
+
+/* Text Content Structuring */
+.warning-main-body {
+    flex: 1;
     text-align: left;
 }
 
-.warning-text strong {
-    color: #ff6b6b;
+.warning-heading {
     font-family: 'Orbitron', sans-serif;
-    letter-spacing: 0.5px;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin: 0 0 6px 0;
+    background: linear-gradient(90deg, #ffffff, #ffb3c6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Subtle warning glow pulse */
-@keyframes pulse-warn {
-    0%, 100% { transform: scale(1); opacity: 0.9; }
-    50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 8px rgba(255,68,68,0.5)); }
+.warning-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
 }
 
-/* Mobile responsive handling */
-@media(max-width: 600px) {
-    .glory-warning {
+/* Premium Highlight Accents */
+.highlight-cyan {
+    color: var(--warn-neon-cyan);
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.3);
+}
+
+/* ==========================================
+   ANIMATION KEYFRAMES
+   ========================================== */
+
+@keyframes live-indicator-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; box-shadow: 0 0 4px var(--warn-neon-red); }
+    50% { transform: scale(1.25); opacity: 1; box-shadow: 0 0 14px var(--warn-neon-red); }
+}
+
+@keyframes banner-subtle-glow {
+    0%, 100% { box-shadow: 0 0 25px rgba(255, 51, 102, 0.12), 0 0 50px rgba(0, 234, 255, 0.02); }
+    50% { box-shadow: 0 0 35px rgba(255, 51, 102, 0.22), 0 0 60px rgba(0, 234, 255, 0.08); }
+}
+
+@keyframes ambient-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   MOBILE & VIEWPORT RESPONSIVENESS
+   ========================================== */
+
+@media (max-width: 768px) {
+    .warning-content-wrapper {
         flex-direction: column;
-        text-align: center;
-        padding: 16px;
-        gap: 10px;
+        align-items: stretch;
+        gap: 18px;
+        padding: 20px;
     }
-    .warning-text {
+
+    .warning-badge-zone {
+        flex-direction: row;
+        min-width: unset;
+        width: fit-content;
+        padding: 6px 14px;
+        margin: 0 auto;
+    }
+
+    .warning-main-body {
         text-align: center;
-        font-size: 13px;
+    }
+
+    .warning-heading {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .warning-desc {
+        font-size: 12.5px;
     }
 }
