@@ -835,3 +835,61 @@ padding-top:10px;
         width: 18px;
     }
 }
+
+
+/* Temp Warning */
+
+/* Glory Section Warning Banner */
+.glory-warning {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 68, 68, 0.06);
+    border: 1px solid rgba(255, 68, 68, 0.25);
+    padding: 16px 24px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.05);
+}
+
+.warning-icon {
+    font-size: 24px;
+    animation: pulse-warn 2s infinite ease-in-out;
+}
+
+.warning-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #fca5a5; /* Soft readable red-pink */
+    text-align: left;
+}
+
+.warning-text strong {
+    color: #ff6b6b;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+/* Subtle warning glow pulse */
+@keyframes pulse-warn {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 8px rgba(255,68,68,0.5)); }
+}
+
+/* Mobile responsive handling */
+@media(max-width: 600px) {
+    .glory-warning {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px;
+        gap: 10px;
+    }
+    .warning-text {
+        text-align: center;
+        font-size: 13px;
+    }
+}
