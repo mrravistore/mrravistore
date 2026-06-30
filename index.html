@@ -28,9 +28,97 @@ Free Fire Services Sri Lanka
 <link rel="icon" type="image/jpeg" href="Logo-tab.png">
 <link rel="stylesheet" href="styles.css">
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0a0a0a;
+}
+
+/* Loader */
+#loader{
+    position:fixed;
+    inset:0;
+    background:#0a0a0a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+/* Ripple */
+.ripple{
+    position:relative;
+    width:90px;
+    height:90px;
+}
+
+.ripple span{
+    position:absolute;
+    inset:0;
+    border:2px solid #00bfff;
+    border-radius:50%;
+    animation:ripple 2s infinite;
+    box-shadow:0 0 12px #00bfff;
+}
+
+.ripple span:nth-child(2){
+    animation-delay:.4s;
+}
+
+.ripple span:nth-child(3){
+    animation-delay:.8s;
+}
+
+.ripple span:nth-child(4){
+    animation-delay:1.2s;
+}
+
+/* Center dot */
+.ripple::before{
+    content:"";
+    position:absolute;
+    width:16px;
+    height:16px;
+    border:3px solid #00bfff;
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 20px #00bfff;
+}
+
+@keyframes ripple{
+    0%{
+        transform:scale(.2);
+        opacity:1;
+    }
+    100%{
+        transform:scale(1);
+        opacity:0;
+    }
+}
+</style>
+
 </head>
 
 <body>
+
+
+    <!-- Loader -->
+    <div id="loader">
+        <div class="ripple">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
 
 <nav class="navbar">
     <div class="container nav-wrap">
@@ -138,7 +226,7 @@ Free Fire Services Sri Lanka
 </div>
 <div class="price">LKR 1,200</div>
 <button class="btn primary full" onclick="buyGuild(1,1200)">ORDER NOW</button>
-<div class="desc" id="glory1-display">Loading...</div>
+<div class="desc" id="glory1-display">142 Sold</div>
 </div>
 
 <div class="card">
@@ -407,6 +495,18 @@ Sanija Sathnindu
 </footer>
 
 <script>
+
+    window.addEventListener("load",()=>{
+        const loader=document.getElementById("loader");
+
+        loader.style.transition="opacity .5s";
+        loader.style.opacity="0";
+
+        setTimeout(()=>{
+            loader.remove();
+        },500);
+    });
+
     // Force these into global scope immediately
     window.buyGuild = function(s, p) { console.log("Module not ready yet"); };
     window.buyLikes = function() { console.log("Module not ready yet"); };
