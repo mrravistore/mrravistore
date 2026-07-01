@@ -369,12 +369,12 @@ async function handleAdmin(number) {
 ========================= */
 function buyGuild(s, price) {
     const data = {
-        1: ["3 Bots", "100K - 200K"],
-        2: ["6 Bots", "200K - 400K"],
-        3: ["9 Bots", "400K - 600K"],
-        4: ["12 Bots", "600K - 900K"],
-        5: ["15 Bots", "900K - 1.2M"],
-        6: ["18 Bots", "1.2M - 1.5M"]
+        1: ["3 Bots", "30K - 45K"],
+        2: ["6 Bots", "60K - 90K"],
+        3: ["9 Bots", "90K - 135K"],
+        4: ["12 Bots", "120K - 180K"],
+        5: ["15 Bots", "150K - 675K"],
+        6: ["18 Bots", "180K - 810K"]
     }[s] || ["N/A", "N/A"];
 
     pendingOrder = {
